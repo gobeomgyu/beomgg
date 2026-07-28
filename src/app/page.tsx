@@ -31,9 +31,7 @@ export default function Home() {
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6">
             DEV <span className="text-blue-500">:</span> Creativity & Inspiration
           </h1>
-          <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl">
-            지속적인 학습과 새로운 도전을 통해 가치 있는 서비스를 만들어가는 개발자입니다.
-          </p>
+
         </section>
 
         {/* GitHub Contributions Section */}
