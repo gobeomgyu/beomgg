@@ -25,14 +25,14 @@ export function Header() {
               href="https://github.com/gobeomgyu" 
               target="_blank" 
               rel="noreferrer"
-              className="p-2 rounded-md hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors"
+              className="p-2 rounded-md hover:bg-gray-200 dark:hover:bg-gray-800 hover:text-blue-500 dark:hover:text-blue-500 transition-colors"
               aria-label="GitHub"
             >
               <GithubIcon size={20} />
             </a>
             <a 
               href="mailto:gobeomgyu01@gmail.com" 
-              className="p-2 rounded-md hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors"
+              className="p-2 rounded-md hover:bg-gray-200 dark:hover:bg-gray-800 hover:text-blue-500 dark:hover:text-blue-500 transition-colors"
               aria-label="Email"
             >
               <Mail size={20} />

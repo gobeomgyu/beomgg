@@ -25,7 +25,7 @@ export default function Home() {
     <>
       <Header />
       <main className="flex-1 w-full max-w-5xl mx-auto px-4 py-12 md:py-20">
-        
+
         {/* Hero Section */}
         <section className="mb-20">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6">
@@ -44,14 +44,14 @@ export default function Home() {
           <div className="flex items-end justify-between mb-8">
             <h2 className="text-3xl font-bold">Featured Projects</h2>
             <a href="#" className="flex items-center gap-1 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors group">
-              View All 
+              View All
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </a>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {dummyProjects.map((project, index) => (
-              <ProjectCard 
+              <ProjectCard
                 key={index}
                 title={project.title}
                 description={project.description}
@@ -64,7 +64,7 @@ export default function Home() {
         </section>
 
       </main>
-      
+
       <footer className="w-full border-t border-gray-200 dark:border-gray-800 py-8 text-center text-sm text-gray-500">
         © {new Date().getFullYear()} beomgo. All rights reserved.
       </footer>
