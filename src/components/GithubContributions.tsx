@@ -39,6 +39,7 @@ export function GithubContributions() {
               fontSize={12}
               blockSize={12}
               blockMargin={4}
+              showWeekdayLabels={true}
             />
           )}
         </div>
