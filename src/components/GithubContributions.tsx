@@ -1,6 +1,7 @@
 "use client";
 
 import { GitHubCalendar } from "react-github-calendar";
+import "react-github-calendar/tooltips.css";
 import { useTheme } from "next-themes";
 import { GithubIcon } from "./icons";
 import { useEffect, useState } from "react";
@@ -40,6 +41,17 @@ export function GithubContributions() {
               blockSize={12}
               blockMargin={4}
               showWeekdayLabels={true}
+              tooltips={{
+                activity: {
+                  text: (activity) => {
+                    const date = new Date(activity.date);
+                    const formattedDate = new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" }).format(date);
+                    if (activity.count === 0) return `No contributions on ${formattedDate}`;
+                    if (activity.count === 1) return `1 contribution on ${formattedDate}`;
+                    return `${activity.count} contributions on ${formattedDate}`;
+                  }
+                }
+              }}
             />
           )}
         </div>
