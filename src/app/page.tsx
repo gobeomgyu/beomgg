@@ -1,6 +1,7 @@
 import { Header } from "@/components/Header";
 import { GithubContributions } from "@/components/GithubContributions";
 import { ProjectCard } from "@/components/ProjectCard";
+import { PostCard } from "@/components/PostCard";
 import { ArrowRight } from "lucide-react";
 
 export default function Home() {
@@ -18,6 +19,16 @@ export default function Home() {
       tags: ["MSA", "Spring Boot", "Docker"],
       date: "2025.11",
       githubUrl: "#"
+    }
+  ];
+
+  const dummyPosts = [
+    {
+      title: "Welcome to My Blog",
+      description: "Welcome to my new blog. Stay tuned for more updates!",
+      tags: ["Blog", "Update"],
+      date: "2026. 1. 4.",
+      readTime: "1 min read"
     }
   ];
 
@@ -58,6 +69,30 @@ export default function Home() {
                 tags={project.tags}
                 date={project.date}
                 githubUrl={project.githubUrl}
+              />
+            ))}
+          </div>
+        </section>
+
+        {/* Recent Posts Section */}
+        <section className="mt-24">
+          <div className="flex items-end justify-between mb-8">
+            <h2 className="text-3xl font-bold">Recent Posts</h2>
+            <a href="#" className="flex items-center gap-1 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors group">
+              Read More
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </a>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {dummyPosts.map((post, index) => (
+              <PostCard
+                key={index}
+                title={post.title}
+                description={post.description}
+                tags={post.tags}
+                date={post.date}
+                readTime={post.readTime}
               />
             ))}
           </div>
