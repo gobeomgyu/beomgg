@@ -45,7 +45,7 @@ export function PostCard({ title, description, tags, date, readTime, link }: Pos
         {description}
       </p>
       
-      <div className="flex items-center justify-between mb-8">
+      <div className="flex items-center justify-between mb-4">
         <div className="flex flex-wrap gap-2">
           {tags.map((tag) => (
             <span 
