@@ -50,7 +50,7 @@ export function PostCard({ title, description, tags, date, readTime, link }: Pos
           {tags.map((tag) => (
             <span 
               key={tag} 
-              className="px-3 py-1 border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 text-xs font-medium rounded-md"
+              className="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 text-xs font-medium rounded-full"
             >
               {tag}
             </span>
