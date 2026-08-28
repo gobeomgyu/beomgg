@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Eye } from "lucide-react";
+import { ClockIcon } from "./icons";
 
 interface PostCardProps {
   title: string;
@@ -12,7 +13,7 @@ interface PostCardProps {
   readTime?: string;
 }
 
-export function PostCard({ title, description, tags, date, link }: PostCardProps) {
+export function PostCard({ title, description, tags, date, readTime, link }: PostCardProps) {
   const [views, setViews] = useState<number>(0);
 
   useEffect(() => {
@@ -44,24 +45,31 @@ export function PostCard({ title, description, tags, date, link }: PostCardProps
         {description}
       </p>
       
-      <div className="flex flex-wrap gap-2 mb-8">
-        {tags.map((tag) => (
-          <span 
-            key={tag} 
-            className="px-3 py-1 border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 text-xs font-medium rounded-md"
-          >
-            {tag}
-          </span>
-        ))}
-      </div>
-      
-      <div className="flex flex-col items-end gap-1.5 mt-auto pt-4 border-t border-gray-100 dark:border-gray-800/50">
+      <div className="flex items-center justify-between mb-8">
+        <div className="flex flex-wrap gap-2">
+          {tags.map((tag) => (
+            <span 
+              key={tag} 
+              className="px-3 py-1 border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 text-xs font-medium rounded-md"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+        
         {views > 0 && (
           <span className="flex items-center gap-1.5 text-sm text-gray-500 dark:text-gray-400 font-medium">
             <Eye size={15} />
             {views.toLocaleString()}
           </span>
         )}
+      </div>
+      
+      <div className="flex items-center justify-between mt-auto pt-4 border-t border-gray-100 dark:border-gray-800/50">
+        <span className="flex items-center gap-1 text-sm text-gray-500 dark:text-gray-400 font-medium">
+          <ClockIcon size={14} />
+          {readTime || '3 min read'}
+        </span>
         <span className="text-sm text-gray-500 dark:text-gray-500 font-medium">
           {date}
         </span>
