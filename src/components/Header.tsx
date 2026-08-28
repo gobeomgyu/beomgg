@@ -14,7 +14,7 @@ export function Header() {
         <div className="flex items-center gap-6">
           <nav className="hidden sm:flex items-center gap-6 text-sm font-medium text-gray-600 dark:text-gray-300">
             <Link href="/" className="hover:text-blue-500 dark:hover:text-blue-500 transition-colors">Home</Link>
-            <a href="https://velog.io/@ykyk3125/posts" target="_blank" rel="noopener noreferrer" className="hover:text-blue-500 dark:hover:text-blue-500 transition-colors">Blog</a>
+            <Link href="/blog" className="hover:text-blue-500 dark:hover:text-blue-500 transition-colors">Blog</Link>
             <Link href="#" className="hover:text-blue-500 dark:hover:text-blue-500 transition-colors">Projects</Link>
           </nav>
           

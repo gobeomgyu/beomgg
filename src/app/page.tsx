@@ -3,40 +3,7 @@ import { GithubContributions } from "@/components/GithubContributions";
 import { ProjectCard } from "@/components/ProjectCard";
 import { PostCard } from "@/components/PostCard";
 import { ArrowRight } from "lucide-react";
-import Parser from "rss-parser";
-
-async function getVelogPosts() {
-  const parser = new Parser();
-  try {
-    const feed = await parser.parseURL('https://v2.velog.io/rss/@ykyk3125');
-    return feed.items.slice(0, 4).map(item => {
-      let descriptionText = '';
-      if (item.contentSnippet) {
-        descriptionText = item.contentSnippet.slice(0, 150) + '...';
-      } else if (item.content) {
-        descriptionText = item.content.replace(/<[^>]*>?/gm, '').slice(0, 150) + '...';
-      }
-
-      const date = item.pubDate ? new Date(item.pubDate).toLocaleDateString('ko-KR', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-      }) : '';
-
-      return {
-        title: item.title || '',
-        link: item.link || '',
-        description: descriptionText,
-        tags: ['Velog'],
-        date: date,
-        readTime: '3 min read'
-      };
-    });
-  } catch (error) {
-    console.error('Error fetching Velog RSS:', error);
-    return [];
-  }
-}
+import { getVelogPosts } from "@/lib/velog";
 
 export default async function Home() {
   const dummyProjects = [
@@ -56,7 +23,8 @@ export default async function Home() {
     }
   ];
 
-  const velogPosts = await getVelogPosts();
+  const allPosts = await getVelogPosts();
+  const velogPosts = allPosts.slice(0, 4);
   const displayPosts = velogPosts.length > 0 ? velogPosts : [
     {
       title: "Velog 글을 불러오는 중입니다...",
@@ -114,7 +82,7 @@ export default async function Home() {
         <section className="mt-24">
           <div className="flex items-end justify-between mb-8">
             <h2 className="text-3xl font-bold">Recent Posts</h2>
-            <a href="https://velog.io/@ykyk3125/posts" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors group">
+            <a href="/blog" className="flex items-center gap-1 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors group">
               Read More
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </a>
