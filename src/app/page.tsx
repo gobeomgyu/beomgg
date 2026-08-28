@@ -3,8 +3,42 @@ import { GithubContributions } from "@/components/GithubContributions";
 import { ProjectCard } from "@/components/ProjectCard";
 import { PostCard } from "@/components/PostCard";
 import { ArrowRight } from "lucide-react";
+import Parser from "rss-parser";
 
-export default function Home() {
+async function getVelogPosts() {
+  const parser = new Parser();
+  try {
+    const feed = await parser.parseURL('https://v2.velog.io/rss/@ykyk3125');
+    return feed.items.slice(0, 4).map(item => {
+      let descriptionText = '';
+      if (item.contentSnippet) {
+        descriptionText = item.contentSnippet.slice(0, 150) + '...';
+      } else if (item.content) {
+        descriptionText = item.content.replace(/<[^>]*>?/gm, '').slice(0, 150) + '...';
+      }
+
+      const date = item.pubDate ? new Date(item.pubDate).toLocaleDateString('ko-KR', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      }) : '';
+
+      return {
+        title: item.title || '',
+        link: item.link || '',
+        description: descriptionText,
+        tags: ['Velog'],
+        date: date,
+        readTime: '3 min read'
+      };
+    });
+  } catch (error) {
+    console.error('Error fetching Velog RSS:', error);
+    return [];
+  }
+}
+
+export default async function Home() {
   const dummyProjects = [
     {
       title: "Clean Architecture 기반의 기술 블로그",
@@ -22,13 +56,15 @@ export default function Home() {
     }
   ];
 
-  const dummyPosts = [
+  const velogPosts = await getVelogPosts();
+  const displayPosts = velogPosts.length > 0 ? velogPosts : [
     {
-      title: "Welcome to My Blog",
-      description: "Welcome to my new blog. Stay tuned for more updates!",
-      tags: ["Blog", "Update"],
-      date: "2026. 1. 4.",
-      readTime: "1 min read"
+      title: "Velog 글을 불러오는 중입니다...",
+      description: "잠시만 기다려주세요.",
+      tags: ["Loading"],
+      date: "",
+      readTime: "",
+      link: ""
     }
   ];
 
@@ -85,7 +121,7 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {dummyPosts.map((post, index) => (
+            {displayPosts.map((post, index) => (
               <PostCard
                 key={index}
                 title={post.title}
@@ -93,6 +129,7 @@ export default function Home() {
                 tags={post.tags}
                 date={post.date}
                 readTime={post.readTime}
+                link={post.link}
               />
             ))}
           </div>
