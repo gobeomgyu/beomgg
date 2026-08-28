@@ -78,7 +78,7 @@ export default function Home() {
         <section className="mt-24">
           <div className="flex items-end justify-between mb-8">
             <h2 className="text-3xl font-bold">Recent Posts</h2>
-            <a href="#" className="flex items-center gap-1 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors group">
+            <a href="https://velog.io/@ykyk3125/posts" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors group">
               Read More
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </a>
