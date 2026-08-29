@@ -1,15 +1,28 @@
-import Parser from "rss-parser";
+import { XMLParser } from 'fast-xml-parser';
 
 export async function getVelogPosts() {
-  const parser = new Parser();
   try {
-    const feed = await parser.parseURL('https://v2.velog.io/rss/@ykyk3125');
-    return feed.items.map(item => {
+    const response = await fetch('https://v2.velog.io/rss/@ykyk3125', {
+      next: { revalidate: 3600 }
+    });
+    
+    if (!response.ok) {
+      throw new Error(`Failed to fetch RSS: ${response.status}`);
+    }
+    
+    const xmlData = await response.text();
+    const parser = new XMLParser({
+      ignoreAttributes: false,
+    });
+    const parsedData = parser.parse(xmlData);
+    
+    const items = parsedData?.rss?.channel?.item || [];
+    const itemsArray = Array.isArray(items) ? items : [items];
+    
+    return itemsArray.map((item: any) => {
       let descriptionText = '';
-      if (item.contentSnippet) {
-         descriptionText = item.contentSnippet.slice(0, 150) + '...';
-      } else if (item.content) {
-         descriptionText = item.content.replace(/<[^>]*>?/gm, '').slice(0, 150) + '...';
+      if (item.description) {
+         descriptionText = item.description.replace(/<[^>]*>?/gm, '').trim().slice(0, 150) + '...';
       }
       
       const date = item.pubDate ? new Date(item.pubDate).toLocaleDateString('ko-KR', {
