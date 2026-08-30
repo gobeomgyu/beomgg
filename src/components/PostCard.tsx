@@ -18,8 +18,16 @@ export function PostCard({ title, description, tags, date, readTime, link }: Pos
 
   useEffect(() => {
     if (link) {
-      // Create a deterministic mock initial view count based on title length
-      const initialMockViews = 20 + (title.length % 30);
+      let initialMockViews = 20 + (title.length % 30);
+      if (title.includes("CPU 스케줄링")) {
+        initialMockViews = 29;
+      } else if (title.includes("컴퓨터 구조")) {
+        initialMockViews = 31;
+      } else if (title.includes("TDD")) {
+        initialMockViews = 30;
+      } else if (title.includes("MVC")) {
+        initialMockViews = 29;
+      }
       const savedViews = localStorage.getItem(`views_${link}`);
       if (savedViews) {
         setViews(parseInt(savedViews, 10));
