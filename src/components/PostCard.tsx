@@ -14,35 +14,52 @@ interface PostCardProps {
 }
 
 export function PostCard({ title, description, tags, date, readTime, link }: PostCardProps) {
-  const [views, setViews] = useState<number>(0);
+  const [clickCount, setClickCount] = useState<number>(0);
+
+  // Determine base views
+  let baseViews = 20 + (title.length % 30);
+  if (title.includes("CPU 스케줄링")) {
+    baseViews = 29;
+  } else if (title.includes("컴퓨터 구조")) {
+    baseViews = 31;
+  } else if (title.includes("TDD")) {
+    baseViews = 30;
+  } else if (title.includes("MVC")) {
+    baseViews = 29;
+  } else if (title.includes("자료구조 2주차")) {
+    baseViews = 41;
+  } else if (title.includes("자료구조 1주차")) {
+    baseViews = 32;
+  } else if (title.includes("스프링 부트 핵심 가이드(3)")) {
+    baseViews = 30;
+  } else if (title.includes("스프링 부트 핵심 가이드(2)")) {
+    baseViews = 42;
+  } else if (title.includes("스프링 부트 핵심 가이드(1)")) {
+    baseViews = 48;
+  } else if (title.includes("7장 요청 파라미터")) {
+    baseViews = 28;
+  } else if (title.includes("스프링 부트")) {
+    baseViews = 32;
+  } else if (title.includes("IoC, Bean,Proxy") || title.includes("IoC, Bean, Proxy")) {
+    baseViews = 37;
+  }
 
   useEffect(() => {
     if (link) {
-      let initialMockViews = 20 + (title.length % 30);
-      if (title.includes("CPU 스케줄링")) {
-        initialMockViews = 29;
-      } else if (title.includes("컴퓨터 구조")) {
-        initialMockViews = 31;
-      } else if (title.includes("TDD")) {
-        initialMockViews = 30;
-      } else if (title.includes("MVC")) {
-        initialMockViews = 29;
-      }
-      const savedViews = localStorage.getItem(`views_${link}`);
-      if (savedViews) {
-        setViews(parseInt(savedViews, 10));
-      } else {
-        setViews(initialMockViews);
-        localStorage.setItem(`views_${link}`, initialMockViews.toString());
+      const savedClicks = localStorage.getItem(`post_clicks_v3_${link}`);
+      if (savedClicks) {
+        setClickCount(parseInt(savedClicks, 10));
       }
     }
-  }, [link, title]);
+  }, [link]);
+
+  const views = baseViews + clickCount;
 
   const handleClick = () => {
     if (link) {
-      const newViews = views + 1;
-      setViews(newViews);
-      localStorage.setItem(`views_${link}`, newViews.toString());
+      const newClicks = clickCount + 1;
+      setClickCount(newClicks);
+      localStorage.setItem(`post_clicks_v3_${link}`, newClicks.toString());
     }
   };
 
