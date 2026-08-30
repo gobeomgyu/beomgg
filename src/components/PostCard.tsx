@@ -42,11 +42,23 @@ export function PostCard({ title, description, tags, date, readTime, link }: Pos
     baseViews = 32;
   } else if (title.includes("IoC, Bean,Proxy") || title.includes("IoC, Bean, Proxy")) {
     baseViews = 37;
+  } else if (title.includes("스프링 프레임워크 2")) {
+    baseViews = 34;
+  } else if (title.includes("스프링 프레임워크 1")) {
+    baseViews = 33;
+  } else if (title.includes("방명록")) {
+    baseViews = 28;
+  } else if (title.includes("6장 템플릿 엔진")) {
+    baseViews = 25;
+  } else if (title.includes("HTTP")) {
+    baseViews = 35;
+  } else if (title.includes("5장 MVC 모델")) {
+    baseViews = 29;
   }
 
   useEffect(() => {
     if (link) {
-      const savedClicks = localStorage.getItem(`post_clicks_v3_${link}`);
+      const savedClicks = localStorage.getItem(`post_clicks_v4_${link}`);
       if (savedClicks) {
         setClickCount(parseInt(savedClicks, 10));
       }
@@ -59,7 +71,7 @@ export function PostCard({ title, description, tags, date, readTime, link }: Pos
     if (link) {
       const newClicks = clickCount + 1;
       setClickCount(newClicks);
-      localStorage.setItem(`post_clicks_v3_${link}`, newClicks.toString());
+      localStorage.setItem(`post_clicks_v4_${link}`, newClicks.toString());
     }
   };
 
