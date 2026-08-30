@@ -54,11 +54,15 @@ export function PostCard({ title, description, tags, date, readTime, link }: Pos
     baseViews = 35;
   } else if (title.includes("5장 MVC 모델")) {
     baseViews = 29;
+  } else if (title.includes("4장 데이터베이스 작업")) {
+    baseViews = 30;
+  } else if (title.includes("3-4 AOP")) {
+    baseViews = 30;
   }
 
   useEffect(() => {
     if (link) {
-      const savedClicks = localStorage.getItem(`post_clicks_v4_${link}`);
+      const savedClicks = localStorage.getItem(`post_clicks_v5_${link}`);
       if (savedClicks) {
         setClickCount(parseInt(savedClicks, 10));
       }
@@ -71,7 +75,7 @@ export function PostCard({ title, description, tags, date, readTime, link }: Pos
     if (link) {
       const newClicks = clickCount + 1;
       setClickCount(newClicks);
-      localStorage.setItem(`post_clicks_v4_${link}`, newClicks.toString());
+      localStorage.setItem(`post_clicks_v5_${link}`, newClicks.toString());
     }
   };
 
