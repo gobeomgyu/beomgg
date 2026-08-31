@@ -17,11 +17,12 @@ export function BlogClient({ posts }: { posts: Post[] }) {
   const [searchQuery, setSearchQuery] = useState("");
   
   const filteredPosts = posts.filter((post) => {
-    const query = searchQuery.toLowerCase();
+    const query = searchQuery.toLowerCase().trim();
+    if (!query) return true;
     return (
-      post.title.toLowerCase().includes(query) ||
-      post.description.toLowerCase().includes(query) ||
-      post.tags.some(tag => tag.toLowerCase().includes(query))
+      post.title?.toLowerCase().includes(query) ||
+      post.description?.toLowerCase().includes(query) ||
+      post.tags?.some(tag => tag.toLowerCase().includes(query))
     );
   });
 

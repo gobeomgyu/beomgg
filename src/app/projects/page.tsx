@@ -10,11 +10,12 @@ export default function Projects() {
   const [searchQuery, setSearchQuery] = useState("");
   
   const filteredProjects = projectsData.filter((project) => {
-    const query = searchQuery.toLowerCase();
+    const query = searchQuery.toLowerCase().trim();
+    if (!query) return true;
     return (
-      project.title.toLowerCase().includes(query) ||
-      project.description.toLowerCase().includes(query) ||
-      project.tags.some(tag => tag.toLowerCase().includes(query))
+      project.title?.toLowerCase().includes(query) ||
+      project.description?.toLowerCase().includes(query) ||
+      project.tags?.some(tag => tag.toLowerCase().includes(query))
     );
   });
 
