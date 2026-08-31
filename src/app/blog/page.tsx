@@ -1,4 +1,3 @@
-import { Header } from "@/components/Header";
 import { getVelogPosts } from "@/lib/velog";
 import { BlogClient } from "./BlogClient";
 
@@ -7,7 +6,6 @@ export default async function Blog() {
 
   return (
     <>
-      <Header />
       <main className="flex-1 w-full max-w-5xl mx-auto px-4 py-12 md:py-20">
         <BlogClient posts={posts} />
       </main>

@@ -5,7 +5,7 @@ import { ThemeToggle } from "./ThemeToggle";
 
 export function Header() {
   return (
-    <header className="w-full border-b border-gray-200 dark:border-gray-800">
+    <header className="sticky top-0 z-[100] w-full border-b border-gray-200 dark:border-gray-800 bg-white/80 dark:bg-[#0f172a]/80 backdrop-blur-md">
       <div className="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
         <Link href="/" className="font-bold text-xl tracking-tight">
           beomgg<span className="text-blue-500">.</span>

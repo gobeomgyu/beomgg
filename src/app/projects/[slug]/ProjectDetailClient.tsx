@@ -32,16 +32,16 @@ export function ProjectDetailClient({ project, content }: { project: any, conten
   }, [content.sections]);
 
   return (
-    <div className="relative w-full max-w-5xl mx-auto px-4 py-12 md:py-20 flex">
+    <div className="relative w-full max-w-3xl mx-auto px-4 py-12 md:py-20">
       {/* Main Content Area */}
-      <div className="flex-1 w-full xl:max-w-3xl pr-0">
-        <a href="/projects" className="inline-flex items-center gap-2 text-sm font-medium text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors mb-12">
-          <ArrowLeft size={16} />
+      <div className="w-full">
+        <a href="/projects" className="group inline-flex items-center gap-1 text-sm font-medium text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors mb-12">
+          <ArrowLeft size={16} className="transition-transform group-hover:-translate-x-1" />
           Back to Projects
         </a>
 
         <div className="mb-16">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight mb-6 leading-[1.3] text-slate-900 dark:text-slate-100">
+          <h1 className="text-lg md:text-2xl lg:text-4xl font-extrabold tracking-tight mb-6 leading-[1.3] text-slate-900 dark:text-slate-100">
             {project.title}
           </h1>
           <p className="text-[17px] text-slate-600 dark:text-slate-400 mb-8 leading-[1.8]">
@@ -86,7 +86,7 @@ export function ProjectDetailClient({ project, content }: { project: any, conten
       {/* Hover TOC - Fixed on right for large screens */}
       <div className="hidden xl:block fixed right-10 top-32 w-[280px] group h-[calc(100vh-16rem)] z-50">
         {/* Subtle Indicator Line (visible when not hovered) */}
-        <div className="absolute right-0 top-0 w-1.5 h-64 bg-slate-100 dark:bg-slate-800 rounded-full transition-opacity duration-300 group-hover:opacity-0 flex flex-col justify-around py-4 opacity-100 items-center">
+        <div className="absolute right-0 top-0 w-1.5 h-full bg-slate-100 dark:bg-slate-800 rounded-full transition-opacity duration-300 group-hover:opacity-0 flex flex-col justify-around py-4 opacity-100 items-center">
           {content.sections.map((_, i) => (
             <div key={i} className="w-1 h-1 bg-slate-300 dark:bg-slate-600 rounded-full" />
           ))}

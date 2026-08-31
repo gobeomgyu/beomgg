@@ -1,4 +1,3 @@
-import { Header } from "@/components/Header";
 import { GithubContributions } from "@/components/GithubContributions";
 import { ProjectCard } from "@/components/ProjectCard";
 import { PostCard } from "@/components/PostCard";
@@ -24,7 +23,6 @@ export default async function Home() {
 
   return (
     <>
-      <Header />
       <main className="flex-1 w-full max-w-5xl mx-auto px-4 py-12 md:py-20">
 
         {/* Hero Section */}

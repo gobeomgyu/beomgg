@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { Header } from "@/components/Header";
 import { ProjectCard } from "@/components/ProjectCard";
 import { projectsData } from "@/lib/data";
 import { Search, X, FolderSearch } from "lucide-react";
@@ -21,7 +20,6 @@ export default function Projects() {
 
   return (
     <>
-      <Header />
       <main className="flex-1 w-full max-w-5xl mx-auto px-4 py-12 md:py-20">
         <div className="flex flex-col md:flex-row md:items-start justify-between mb-12 gap-6">
           <div>
