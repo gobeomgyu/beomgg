@@ -92,7 +92,7 @@ export default async function Home() {
       </main>
 
       <footer className="w-full border-t border-gray-200 dark:border-gray-800 py-8 text-center text-sm text-gray-500">
-        © {new Date().getFullYear()} beomgo. All rights reserved.
+        © {new Date().getFullYear()} beomgg. All rights reserved.
       </footer>
     </>
   );

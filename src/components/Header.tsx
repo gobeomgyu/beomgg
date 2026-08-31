@@ -8,7 +8,7 @@ export function Header() {
     <header className="w-full border-b border-gray-200 dark:border-gray-800">
       <div className="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
         <Link href="/" className="font-bold text-xl tracking-tight">
-          beomgo<span className="text-blue-500">.</span>
+          beomgg<span className="text-blue-500">.</span>
         </Link>
         
         <div className="flex items-center gap-6">
