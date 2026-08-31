@@ -80,8 +80,8 @@ export function PostCard({ title, description, tags, date, readTime, link }: Pos
   };
 
   const cardContent = (
-    <div className="flex flex-col border border-gray-200 dark:border-gray-800 rounded-2xl p-6 md:p-8 bg-white dark:bg-[#0f172a] shadow-sm hover:shadow-md transition-shadow h-full">
-      <h3 className="text-xl font-bold mb-4">{title}</h3>
+    <div className="group flex flex-col border border-gray-200 dark:border-gray-800 rounded-2xl p-6 md:p-8 bg-white dark:bg-[#0f172a] shadow-sm hover:shadow-md hover:-translate-y-1.5 transition-all duration-300 h-full">
+      <h3 className="text-xl font-bold mb-4 group-hover:text-blue-500 transition-colors">{title}</h3>
       <p className="text-gray-600 dark:text-gray-400 mb-6 flex-grow leading-relaxed line-clamp-3">
         {description}
       </p>
