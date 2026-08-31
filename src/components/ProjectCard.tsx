@@ -20,13 +20,20 @@ export function ProjectCard({ slug, title, description, tags, date, githubUrl, i
     }`}>
       <Link href={`/projects/${slug}`} className="absolute inset-0 z-10 rounded-3xl" aria-label={`View details of ${title}`} />
       
-      {inProgress && (
+      {inProgress ? (
         <span className="inline-flex items-center gap-1.5 text-[11px] font-bold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/50 px-2 py-0.5 rounded-full w-fit mb-3">
           <span className="relative flex h-2 w-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-500 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-600"></span>
           </span>
           진행 중
+        </span>
+      ) : (
+        <span className="inline-flex items-center gap-1.5 text-[11px] font-bold text-orange-600 dark:text-orange-400 bg-orange-50 dark:bg-orange-950/50 px-2 py-0.5 rounded-full w-fit mb-3">
+          <span className="relative flex h-2 w-2">
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
+          </span>
+          완료
         </span>
       )}
 
