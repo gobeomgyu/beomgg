@@ -78,7 +78,7 @@ export function ProjectDetailClient({ project, content }: { project: any, conten
           </div>
         </div>
 
-        <div className="space-y-24">
+        <div className="space-y-24 pb-[40vh]">
           {content.sections.map((section) => (
             <section key={section.id} id={section.id} className="scroll-mt-24">
               <h2 className="text-2xl font-bold mb-8 pb-4 border-b border-slate-100 dark:border-slate-800/80 text-slate-900 dark:text-slate-100">
