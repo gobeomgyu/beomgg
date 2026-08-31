@@ -105,6 +105,46 @@ export const projectContents: Record<string, { sections: ProjectSection[] }> = {
       }
     ]
   },
+  "ssoksik": {
+    sections: [
+      {
+        id: "background",
+        title: "프로젝트 배경 및 아이디어",
+        content: (
+          <div className="space-y-4">
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+              평소 운동이나 식단 등에 관심이 많고, 부모님이나 조부모님이 만성질환을 겪기도 하면서 건강 문제에 대한 깊은 관심을 가지고 있었습니다.
+            </p>
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+              특히 당뇨 환자들이 냉장고나 잘 보이는 곳에 <strong className="font-semibold text-gray-900 dark:text-white">'먹어도 되는 음식, 안되는 음식'</strong> 표를 붙여두고 매번 대조하는 불편함을 포착했습니다. 당뇨 인구가 점점 증가하는 현대 사회에서 이러한 일상 속 피로도는 반드시 해결해야 할 문제라고 판단했습니다.
+            </p>
+          </div>
+        )
+      },
+      {
+        id: "goal",
+        title: "솔루션 기획 및 목표",
+        content: (
+          <div className="space-y-4">
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+              위의 문제를 해결하고자 팀 프로젝트를 통해 <strong className="font-semibold text-gray-900 dark:text-white">사진 한 장으로 식단을 기록하는 AI 당뇨 관리 솔루션</strong>을 기획했습니다.
+            </p>
+            <ul className="list-disc pl-5 space-y-3 text-gray-700 dark:text-gray-300 leading-relaxed mt-4">
+              <li>
+                <strong className="text-gray-900 dark:text-white">자동 음식 인식:</strong> 식단 사진을 촬영하면 AI가 음식을 자동으로 인식합니다.
+              </li>
+              <li>
+                <strong className="text-gray-900 dark:text-white">직관적인 정보 제공:</strong> 당 부하 지수 및 필수 영양 정보를 한눈에 시각화하여 사용자의 피로도를 낮춥니다.
+              </li>
+              <li>
+                <strong className="text-gray-900 dark:text-white">개인화 추천:</strong> 개인 맞춤형 분석을 통해 부족한 영양을 채울 수 있는 최적의 식단을 추천하는 앱 구조를 설계했습니다.
+              </li>
+            </ul>
+          </div>
+        )
+      }
+    ]
+  },
 };
 
 export const getDefaultContent = () => ({

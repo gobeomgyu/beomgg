@@ -49,7 +49,7 @@ export function ProjectDetailClient({ project, content }: { project: any, conten
         </a>
 
         <div className="mb-16">
-          <h1 className="text-lg md:text-2xl lg:text-4xl font-extrabold tracking-tight mb-6 leading-[1.3] text-slate-900 dark:text-slate-100">
+          <h1 className="text-2xl md:text-3xl lg:text-[42px] font-extrabold tracking-tight mb-6 leading-[1.3] text-slate-900 dark:text-slate-100">
             {project.title}
           </h1>
           <p className="text-[17px] text-slate-600 dark:text-slate-400 mb-8 leading-[1.8]">
@@ -71,7 +71,7 @@ export function ProjectDetailClient({ project, content }: { project: any, conten
 
           <div className="flex flex-wrap gap-2 mb-12">
             {project.tags.map((tag: string) => (
-              <span key={tag} className="px-3.5 py-1.5 bg-slate-50 dark:bg-slate-800/80 text-slate-600 dark:text-slate-300 text-[13px] font-semibold rounded-full border border-slate-100 dark:border-slate-700/50">
+              <span key={tag} className="px-3.5 py-1.5 bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-100 text-[13px] font-semibold rounded-full border border-slate-200 dark:border-slate-700">
                 {tag}
               </span>
             ))}

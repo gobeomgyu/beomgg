@@ -1,5 +1,13 @@
 export const projectsData = [
   {
+    slug: "ssoksik",
+    title: "쏙식(Ssoksik) - AI 당뇨 식단 관리 솔루션",
+    description: "사진 한 장으로 식단을 기록하고 음식을 자동 인식하여 당 부하 지수 및 영양 정보를 시각화하는 AI 당뇨 관리 솔루션 백엔드 API 서버",
+    tags: ["Spring Boot", "Java", "AI"],
+    date: "2025.07",
+    githubUrl: "https://github.com/p-project-ssoksik/backend-mobile"
+  },
+  {
     slug: "zzz",
     title: "ZZZ - AI 페르소나 & 실시간 상태 공유",
     description: "Flutter 하이브리드 네이티브 브릿지와 Spring Boot 이벤트 기반 MSA, RabbitMQ 및 RAG 기반 AI 페르소나 대리 응답을 결합한 커플 상태 공유 플랫폼",
