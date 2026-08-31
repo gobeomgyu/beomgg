@@ -29,7 +29,7 @@ export default async function Home() {
 
         {/* Hero Section */}
         <section className="mb-20">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6">
+          <h1 className="text-2xl md:text-4xl lg:text-5xl font-extrabold tracking-tight mb-6">
             DEV <span className="text-blue-500">:</span> Building Value
           </h1>
 
