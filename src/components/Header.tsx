@@ -15,7 +15,7 @@ export function Header() {
           <nav className="hidden sm:flex items-center gap-6 text-sm font-medium text-gray-600 dark:text-gray-300">
             <Link href="/" className="hover:text-blue-500 dark:hover:text-blue-500 transition-colors">Home</Link>
             <Link href="/blog" className="hover:text-blue-500 dark:hover:text-blue-500 transition-colors">Blog</Link>
-            <Link href="#" className="hover:text-blue-500 dark:hover:text-blue-500 transition-colors">Projects</Link>
+            <Link href="/projects" className="hover:text-blue-500 dark:hover:text-blue-500 transition-colors">Projects</Link>
           </nav>
           
           <div className="h-6 w-px bg-gray-200 dark:bg-gray-800 hidden sm:block mx-2" />

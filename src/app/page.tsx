@@ -4,24 +4,10 @@ import { ProjectCard } from "@/components/ProjectCard";
 import { PostCard } from "@/components/PostCard";
 import { ArrowRight } from "lucide-react";
 import { getVelogPosts } from "@/lib/velog";
+import { projectsData } from "@/lib/data";
 
 export default async function Home() {
-  const dummyProjects = [
-    {
-      title: "Clean Architecture 기반의 기술 블로그",
-      description: "Next.js 14 App Router 환경에 Hexagonal Architecture를 도입하여, 비즈니스 로직과 UI/데이터 소스를 완벽하게 분리한 확장 가능한 웹 플랫폼",
-      tags: ["Next.js", "Clean Architecture", "TypeScript"],
-      date: "2026.01",
-      githubUrl: "#"
-    },
-    {
-      title: "영화 리뷰 및 시청 인증 서비스",
-      description: "Spring Boot, FastAPI, PHP 등 다양한 언어(Polyglot)로 구현된 마이크로서비스들을 Docker 컨테이너로 오케스트레이션하고, Spring Cloud Gateway를 통해 단일 진입점을 구축...",
-      tags: ["MSA", "Spring Boot", "Docker"],
-      date: "2025.11",
-      githubUrl: "#"
-    }
-  ];
+  const displayProjects = projectsData.slice(0, 2);
 
   const allPosts = await getVelogPosts();
   const velogPosts = allPosts.slice(0, 4);
@@ -58,14 +44,14 @@ export default async function Home() {
         <section>
           <div className="flex items-end justify-between mb-8">
             <h2 className="text-3xl font-bold">Featured Projects</h2>
-            <a href="#" className="flex items-center gap-1 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors group">
+            <a href="/projects" className="flex items-center gap-1 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors group">
               View All
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </a>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {dummyProjects.map((project, index) => (
+            {displayProjects.map((project, index) => (
               <ProjectCard
                 key={index}
                 title={project.title}
