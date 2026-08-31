@@ -21,6 +21,13 @@ export const projectsData = [
     githubUrl: "https://github.com/gobeomgyu/Android-memory-game"
   },
   {
+    title: "CheckProduct - 식품 리콜 정보 조회 서비스",
+    description: "식품안전 공공데이터를 활용한 식품 리콜 조회 모바일 앱의 백엔드 시스템. Spring Boot 기반의 상품 관리 및 검색 REST API 구현과 Swagger를 활용한 API 명세 작성, PR 기반의 팀 협업 환경 구축",
+    tags: ["Spring Boot", "Java", "REST API"],
+    date: "2025.09",
+    githubUrl: "https://github.com/CheckProduct/Checkproduct-be"
+  },
+  {
     title: "효드림 - 실버 세대 맞춤형 헬스케어 커머스",
     description: "기저질환 및 알레르기 필터링과 LLM 기반 추천, Redis Streams 실시간 이벤트 수집 및 딥러닝 리뷰 감성 분석을 결합한 백엔드 시스템",
     tags: ["Spring Boot", "FastAPI", "AI / LLM"],
