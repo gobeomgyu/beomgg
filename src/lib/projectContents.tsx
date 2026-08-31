@@ -145,6 +145,71 @@ export const projectContents: Record<string, { sections: ProjectSection[] }> = {
       }
     ]
   },
+  "jg-estate": {
+    sections: [
+      {
+        id: "background",
+        title: "디지털 소외 문제 해결을 위한 ERP 기획",
+        content: (
+          <div className="space-y-4">
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+              국내 공인중개사 시장의 고령화(50대 이상 60~70% 육박)로 인한 디지털 소외 문제와 기존 ERP의 과도한 복잡성을 포착했습니다.
+            </p>
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+              이를 해결하기 위해, 별도의 학습이 필요 없는 <strong className="font-semibold text-gray-900 dark:text-white">엑셀 친화적 UI 기반의 통합 업무 솔루션</strong>을 기획하여 예비창업패키지에 제안했습니다.
+            </p>
+          </div>
+        )
+      },
+      {
+        id: "design",
+        title: "현장 조사 기반의 사용자 중심 설계",
+        content: (
+          <div className="space-y-4">
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+              직접 부동산 현장 조사를 통해 실무자들의 생생한 의견을 듣고, 프로그램을 직접 구동해 보며 기존 시스템의 문제점을 깊이 있게 파악했습니다.
+            </p>
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+              수집된 피드백을 바탕으로, 기존 시스템의 단점을 보완하고 사용성을 극대화할 수 있도록 <strong className="font-semibold text-gray-900 dark:text-white">단순화된 ERP 아키텍처</strong>를 설계했습니다.
+            </p>
+          </div>
+        )
+      },
+      {
+        id: "features",
+        title: "현장 밀착형 핵심 기능 정의",
+        content: (
+          <div className="space-y-4">
+            <ul className="list-disc pl-5 space-y-3 text-gray-700 dark:text-gray-300 leading-relaxed">
+              <li>
+                <strong className="text-gray-900 dark:text-white">직관적인 UX/UI:</strong> 중장년층에게 익숙한 엑셀 기반의 간단한 인터페이스를 제공합니다.
+              </li>
+              <li>
+                <strong className="text-gray-900 dark:text-white">CTI 연동 서비스:</strong> 전화 수신 시 고객 정보와 상담 내역을 화면에 즉시 띄워주는 팝업 기능을 구현했습니다.
+              </li>
+              <li>
+                <strong className="text-gray-900 dark:text-white">공동중개 네트워크:</strong> 실시간 쪽지 기반의 공동중개 네트워크를 구축하고, 활성화되지 않은 모바일 앱을 대체할 구체적 해결책을 제시했습니다.
+              </li>
+            </ul>
+          </div>
+        )
+      },
+      {
+        id: "business",
+        title: "비즈니스 모델 구축 및 시장 진입 전략",
+        content: (
+          <div className="space-y-4">
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+              <strong className="font-semibold text-gray-900 dark:text-white">월 정액 SaaS 구독 모델</strong>을 기반으로 수익 구조를 확립했습니다.
+            </p>
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+              CTI 연동, 전자계약 수수료 등 부가서비스로 확장성을 넓히고, 초기 타깃층의 진입 장벽을 완화하기 위해 데이터 이관 대행 서비스를 핵심 전략으로 제공합니다.
+            </p>
+          </div>
+        )
+      }
+    ]
+  },
 };
 
 export const getDefaultContent = () => ({

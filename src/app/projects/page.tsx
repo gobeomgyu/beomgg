@@ -70,6 +70,7 @@ export default function Projects() {
                 tags={project.tags}
                 date={project.date}
                 githubUrl={project.githubUrl}
+                inProgress={project.inProgress}
               />
             ))}
           </div>

@@ -58,6 +58,7 @@ export default async function Home() {
                 tags={project.tags}
                 date={project.date}
                 githubUrl={project.githubUrl}
+                inProgress={project.inProgress}
               />
             ))}
           </div>

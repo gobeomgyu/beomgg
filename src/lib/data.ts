@@ -2,10 +2,19 @@ export const projectsData = [
   {
     slug: "ssoksik",
     title: "쏙식(Ssoksik) - AI 당뇨 식단 관리 솔루션",
-    description: "사진 한 장으로 식단을 기록하고 음식을 자동 인식하여 당 부하 지수 및 영양 정보를 시각화하는 AI 당뇨 관리 솔루션 백엔드 API 서버",
+    description: "사진 한 장으로 식단을 기록하고 음식을 자동 인식하여 당 부하 지수 및 영양 정보를 시각화하는 AI 당뇨 관리 솔루션 앱",
     tags: ["Spring Boot", "Java", "AI"],
     date: "2025.07",
     githubUrl: "https://github.com/p-project-ssoksik/backend-mobile"
+  },
+  {
+    slug: "jg-estate",
+    title: "jg_estate - 중장년층 공인중개사를 위한 부동산 ERP",
+    description: "국내 공인중개사 시장의 고령화 문제를 해결하기 위해, 별도 학습이 필요 없는 엑셀 친화적 UI와 CTI 연동 서비스를 제공하는 부동산 통합 업무 SaaS 솔루션",
+    tags: ["C#", "SaaS", "ERP"],
+    date: "2026.05",
+    githubUrl: "https://github.com/teamjoogo/jg_estate",
+    inProgress: true
   },
   {
     slug: "beomgg",
