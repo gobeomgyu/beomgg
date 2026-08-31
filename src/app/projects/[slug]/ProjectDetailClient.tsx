@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Calendar } from "lucide-react";
 import { GithubIcon } from "@/components/icons";
 import { ProjectSection } from "@/lib/projectContents";
 
@@ -15,6 +15,14 @@ export function ProjectDetailClient({ project, content }: { project: any, conten
     }
 
     const handleScroll = () => {
+      // Check if user has scrolled to the bottom of the page
+      const isAtBottom = window.innerHeight + Math.round(window.scrollY) >= document.body.offsetHeight - 50;
+      
+      if (isAtBottom && content.sections.length > 0) {
+        setActiveId(content.sections[content.sections.length - 1].id);
+        return;
+      }
+
       const scrollPosition = window.scrollY + 150; // offset for header
       let currentId = content.sections[0]?.id;
       
@@ -50,7 +58,8 @@ export function ProjectDetailClient({ project, content }: { project: any, conten
           
           <div className="flex flex-wrap items-center gap-4 text-[15px] text-slate-500 dark:text-slate-400 font-semibold border-b border-slate-100 dark:border-slate-800/80 pb-8 mb-8">
             <span className="flex items-center gap-1.5 tracking-wide">
-              📅 {project.date}
+              <Calendar size={16} className="text-slate-400 dark:text-slate-500" />
+              {project.date}
             </span>
             {project.githubUrl !== "#" && (
               <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:text-slate-900 dark:hover:text-white transition-colors">
@@ -86,9 +95,16 @@ export function ProjectDetailClient({ project, content }: { project: any, conten
       {/* Hover TOC - Fixed on right for large screens */}
       <div className="hidden xl:block fixed right-10 top-32 w-[280px] group h-[calc(100vh-16rem)] z-50">
         {/* Subtle Indicator Line (visible when not hovered) */}
-        <div className="absolute right-0 top-0 w-1.5 h-full bg-slate-100 dark:bg-slate-800 rounded-full transition-opacity duration-300 group-hover:opacity-0 flex flex-col justify-around py-4 opacity-100 items-center">
-          {content.sections.map((_, i) => (
-            <div key={i} className="w-1 h-1 bg-slate-300 dark:bg-slate-600 rounded-full" />
+        <div className="absolute right-0 top-20 transition-opacity duration-300 group-hover:opacity-0 flex flex-col gap-3 items-end">
+          {content.sections.map((section) => (
+            <div 
+              key={section.id} 
+              className={`h-[2px] transition-colors duration-300 ${
+                activeId === section.id
+                  ? "w-[14px] bg-slate-900 dark:bg-white"
+                  : "w-[14px] bg-slate-300 dark:bg-slate-600"
+              }`} 
+            />
           ))}
         </div>
         
