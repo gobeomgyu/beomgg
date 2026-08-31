@@ -13,8 +13,20 @@ interface PostCardProps {
   readTime?: string;
 }
 
+function getRelativeTime(timestamp: number) {
+  const diffInSeconds = Math.floor((Date.now() - timestamp) / 1000);
+  if (diffInSeconds < 60) return "just now";
+  const diffInMinutes = Math.floor(diffInSeconds / 60);
+  if (diffInMinutes < 60) return `${diffInMinutes} min${diffInMinutes > 1 ? 's' : ''} ago`;
+  const diffInHours = Math.floor(diffInMinutes / 60);
+  if (diffInHours < 24) return `${diffInHours} hr${diffInHours > 1 ? 's' : ''} ago`;
+  const diffInDays = Math.floor(diffInHours / 24);
+  return `${diffInDays} day${diffInDays > 1 ? 's' : ''} ago`;
+}
+
 export function PostCard({ title, description, tags, date, readTime, link }: PostCardProps) {
   const [clickCount, setClickCount] = useState<number>(0);
+  const [lastClickedAt, setLastClickedAt] = useState<number | null>(null);
 
   // Determine base views
   let baseViews = 20 + (title.length % 30);
@@ -66,6 +78,10 @@ export function PostCard({ title, description, tags, date, readTime, link }: Pos
       if (savedClicks) {
         setClickCount(parseInt(savedClicks, 10));
       }
+      const savedTime = localStorage.getItem(`post_time_v5_${link}`);
+      if (savedTime) {
+        setLastClickedAt(parseInt(savedTime, 10));
+      }
     }
   }, [link]);
 
@@ -76,6 +92,9 @@ export function PostCard({ title, description, tags, date, readTime, link }: Pos
       const newClicks = clickCount + 1;
       setClickCount(newClicks);
       localStorage.setItem(`post_clicks_v5_${link}`, newClicks.toString());
+      const now = Date.now();
+      setLastClickedAt(now);
+      localStorage.setItem(`post_time_v5_${link}`, now.toString());
     }
   };
 
@@ -109,7 +128,7 @@ export function PostCard({ title, description, tags, date, readTime, link }: Pos
       <div className="flex items-center justify-between mt-auto pt-4 border-t border-gray-100 dark:border-gray-800/50">
         <span className="flex items-center gap-1 text-sm text-gray-500 dark:text-gray-400 font-medium">
           <ClockIcon size={14} />
-          {readTime || '3 min read'}
+          {lastClickedAt ? `Read ${getRelativeTime(lastClickedAt)}` : (readTime || '3 min read')}
         </span>
         <span className="text-sm text-gray-500 dark:text-gray-500 font-medium">
           {date}
