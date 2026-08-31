@@ -7,11 +7,11 @@ export const projectsData = [
     githubUrl: "#"
   },
   {
-    title: "Clean Architecture 기반의 기술 블로그",
-    description: "Next.js 16 App Router 환경에 Hexagonal Architecture를 도입하여, 비즈니스 로직과 UI/데이터 소스를 완벽하게 분리한 확장 가능한 웹 플랫폼",
-    tags: ["Next.js", "Clean Architecture", "TypeScript"],
-    date: "2026.01",
-    githubUrl: "#"
+    title: "beomgg. - 개발자 포트폴리오 & 블로그",
+    description: "Next.js 16 App Router와 Tailwind CSS v4 기반의 개발자 포트폴리오 및 기술 블로그. Velog RSS 피드 연동을 통한 실시간 게시물 동기화와 최적화된 반응형 UI 및 다크모드 환경 제공",
+    tags: ["Next.js", "Tailwind CSS", "TypeScript"],
+    date: "2026.08",
+    githubUrl: "https://github.com/gobeomgyu/beomgg"
   },
   {
     title: "효드림 - 실버 세대 맞춤형 헬스케어 커머스",
