@@ -1,6 +1,8 @@
+import Link from "next/link";
 import { GithubIcon } from "./icons";
 
 interface ProjectCardProps {
+  slug: string;
   title: string;
   description: string;
   tags: string[];
@@ -8,9 +10,10 @@ interface ProjectCardProps {
   githubUrl?: string;
 }
 
-export function ProjectCard({ title, description, tags, date, githubUrl }: ProjectCardProps) {
+export function ProjectCard({ slug, title, description, tags, date, githubUrl }: ProjectCardProps) {
   return (
-    <div className="group flex flex-col border border-slate-200 dark:border-slate-800 rounded-3xl p-7 bg-white dark:bg-[#0f172a] shadow-[0_2px_10px_rgb(0,0,0,0.02)] hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 h-full">
+    <div className="group relative flex flex-col border border-slate-200 dark:border-slate-800 rounded-3xl p-7 bg-white dark:bg-[#0f172a] shadow-[0_2px_10px_rgb(0,0,0,0.02)] hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 h-full">
+      <Link href={`/projects/${slug}`} className="absolute inset-0 z-10 rounded-3xl" aria-label={`View details of ${title}`} />
       <h3 className="text-[22px] font-bold mb-3 text-slate-900 dark:text-slate-100 group-hover:text-blue-600 transition-colors tracking-tight leading-snug">{title}</h3>
       <p className="text-slate-500 dark:text-slate-400 mb-6 flex-grow leading-[1.7] text-[15px]">
         {description}
@@ -30,7 +33,9 @@ export function ProjectCard({ title, description, tags, date, githubUrl }: Proje
       <div className="flex items-center justify-between mt-auto pt-5 border-t border-slate-100 dark:border-slate-800/80">
         <a 
           href={githubUrl || "#"} 
-          className="flex items-center gap-2 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors text-[15px] font-semibold"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="relative z-20 flex items-center gap-2 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors text-[15px] font-semibold"
         >
           <GithubIcon size={18} />
           Code

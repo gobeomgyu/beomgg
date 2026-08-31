@@ -66,6 +66,7 @@ export default function Projects() {
             {filteredProjects.map((project, index) => (
               <ProjectCard
                 key={index}
+                slug={project.slug}
                 title={project.title}
                 description={project.description}
                 tags={project.tags}
