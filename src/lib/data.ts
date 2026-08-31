@@ -14,6 +14,13 @@ export const projectsData = [
     githubUrl: "https://github.com/gobeomgyu/beomgg"
   },
   {
+    title: "Android Memory Game",
+    description: "Kotlin 기반으로 개발된 안드로이드 네이티브 단말기용 메모리 게임 앱. 사용자의 기억력을 테스트할 수 있는 직관적인 카드 뒤집기 인터페이스 구현",
+    tags: ["Android", "Kotlin", "Mobile App"],
+    date: "2025.05",
+    githubUrl: "https://github.com/gobeomgyu/Android-memory-game"
+  },
+  {
     title: "효드림 - 실버 세대 맞춤형 헬스케어 커머스",
     description: "기저질환 및 알레르기 필터링과 LLM 기반 추천, Redis Streams 실시간 이벤트 수집 및 딥러닝 리뷰 감성 분석을 결합한 백엔드 시스템",
     tags: ["Spring Boot", "FastAPI", "AI / LLM"],
