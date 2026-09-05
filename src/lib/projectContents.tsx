@@ -109,35 +109,189 @@ export const projectContents: Record<string, { sections: ProjectSection[] }> = {
     sections: [
       {
         id: "background",
-        title: "프로젝트 배경 및 아이디어",
+        title: "프로젝트 배경 및 목표",
         content: (
           <div className="space-y-4">
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-              평소 운동이나 식단 등에 관심이 많고, 부모님이나 조부모님이 만성질환을 겪기도 하면서 건강 문제에 대한 깊은 관심을 가지고 있었습니다.
+              '쏙식(Ssoksik)'은 개인의 혈당 관리와 건강한 식습관 형성을 돕기 위해 기획된 AI 기반 종합 헬스케어 플랫폼입니다. 평소 건강과 식단 관리에 대한 관심, 특히 당뇨 환자분들의 일상적 피로도에 착안해 기존의 단순 기록형 앱에서 벗어나 <strong className="font-semibold text-gray-900 dark:text-white">최신 AI 기술을 활용한 맞춤형 분석 및 추천</strong>을 제공하는 것을 목표로 했습니다.
             </p>
-            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-              특히 당뇨 환자들이 냉장고나 잘 보이는 곳에 <strong className="font-semibold text-gray-900 dark:text-white">'먹어도 되는 음식, 안되는 음식'</strong> 표를 붙여두고 매번 대조하는 불편함을 포착했습니다. 당뇨 인구가 점점 증가하는 현대 사회에서 이러한 일상 속 피로도는 반드시 해결해야 할 문제라고 판단했습니다.
-            </p>
+            <ul className="list-disc pl-5 space-y-3 text-gray-700 dark:text-gray-300 leading-relaxed mt-4">
+              <li>
+                <strong className="text-gray-900 dark:text-white">AI 기반 맞춤형 식단 추천:</strong> Google GenAI를 연동하여 혈당 수치와 식사 기록(이미지/텍스트)을 분석하고 실시간 피드백 제공
+              </li>
+              <li>
+                <strong className="text-gray-900 dark:text-white">멀티 플랫폼 통합 시스템:</strong> React Native 기반 모바일 앱(사용자용)과 React 기반 관리자 웹 대시보드 구축
+              </li>
+              <li>
+                <strong className="text-gray-900 dark:text-white">직관적인 기록 및 통계:</strong> 캘린더와 통계 차트를 통해 매일의 식단과 혈당 변화를 쉽게 파악
+              </li>
+            </ul>
           </div>
         )
       },
       {
-        id: "goal",
-        title: "솔루션 기획 및 목표",
+        id: "tech-stack",
+        title: "시스템 아키텍처 및 기술 스택",
+        content: (
+          <div className="space-y-6">
+            <div className="bg-gray-50 dark:bg-slate-800/50 p-6 rounded-2xl border border-gray-100 dark:border-slate-700/50">
+              <h4 className="font-bold text-lg mb-3">Frontend & Core</h4>
+              <ul className="space-y-2 text-gray-700 dark:text-gray-300">
+                <li><span className="font-semibold text-gray-900 dark:text-white">Framework (Mobile):</span> React Native (Expo), React 19</li>
+                <li><span className="font-semibold text-gray-900 dark:text-white">Framework (Admin):</span> React 19, Vite</li>
+                <li><span className="font-semibold text-gray-900 dark:text-white">Styling & Viz:</span> Tailwind CSS v3, Recharts</li>
+              </ul>
+            </div>
+            
+            <div className="bg-gray-50 dark:bg-slate-800/50 p-6 rounded-2xl border border-gray-100 dark:border-slate-700/50">
+              <h4 className="font-bold text-lg mb-3">Backend & Data</h4>
+              <ul className="space-y-2 text-gray-700 dark:text-gray-300">
+                <li><span className="font-semibold text-gray-900 dark:text-white">Framework:</span> Java 21, Spring Boot 4.0, Spring WebMVC, Spring Data JPA</li>
+                <li><span className="font-semibold text-gray-900 dark:text-white">Storage & Security:</span> MySQL, AWS S3, Spring Security (JWT)</li>
+                <li><span className="font-semibold text-gray-900 dark:text-white">AI & Integration:</span> Google GenAI SDK, Springdoc OpenAPI</li>
+              </ul>
+            </div>
+          </div>
+        )
+      },
+      {
+        id: "challenges",
+        title: "핵심 기술적 도전 및 해결 과정",
+        content: (
+          <div className="space-y-8">
+            <div>
+              <h4 className="text-xl font-bold mb-4">Google GenAI 연동 및 프롬프트 최적화</h4>
+              <ul className="list-disc pl-5 space-y-3 text-gray-700 dark:text-gray-300 leading-relaxed">
+                <li>
+                  <span className="font-semibold text-gray-900 dark:text-white">Challenge:</span> AI 분석 요청 시 응답 형식이 일관되지 않아 모바일 앱 내에서 UI로 파싱하는 데 잦은 렌더링 오류가 발생했습니다.
+                </li>
+                <li>
+                  <span className="font-semibold text-gray-900 dark:text-white">Solution:</span> 백엔드에서 엄격한 프롬프트 엔지니어링을 적용하고, 응답을 특정 JSON 포맷으로 강제(Structured Output) 처리하여 클라이언트 단의 파싱 안정성을 크게 높였습니다.
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="text-xl font-bold mb-4">대용량 이미지 처리와 AWS S3 업로드 최적화</h4>
+              <ul className="list-disc pl-5 space-y-3 text-gray-700 dark:text-gray-300 leading-relaxed">
+                <li>
+                  <span className="font-semibold text-gray-900 dark:text-white">Challenge:</span> 모바일 기기에서 촬영한 고해상도 이미지를 그대로 전송하면 네트워크 지연과 스토리지 낭비가 심했습니다.
+                </li>
+                <li>
+                  <span className="font-semibold text-gray-900 dark:text-white">Solution:</span> 클라이언트 단에서 Expo Image Picker를 활용해 이미지 리사이징을 선행하고, 백엔드는 AWS S3 연동을 통해 빠르고 안전하게 저장하는 업로드 파이프라인을 구축했습니다.
+                </li>
+              </ul>
+            </div>
+          </div>
+        )
+      },
+      {
+        id: "results",
+        title: "프로젝트 성과 및 배운 점",
+        content: (
+          <div className="space-y-4">
+            <ul className="list-disc pl-5 space-y-3 text-gray-700 dark:text-gray-300 leading-relaxed">
+              <li>
+                <span className="font-semibold text-gray-900 dark:text-white">통합 시스템 설계 경험:</span> 모바일 앱, 관리자 웹, API 백엔드로 분리된 3개의 저장소를 동시에 운영하며, 각 플랫폼 간의 원활한 데이터 통신(REST API)과 아키텍처 설계 역량을 길렀습니다.
+              </li>
+              <li>
+                <span className="font-semibold text-gray-900 dark:text-white">최신 AI 기술 실무 적용:</span> 외부 모델인 Google GenAI를 단순 연동하는 것을 넘어, 서비스의 핵심 비즈니스 로직에 결합해 사용자에게 실질적인 가치를 제공하는 방법을 체득했습니다.
+              </li>
+            </ul>
+          </div>
+        )
+      }
+    ]
+  },
+  "android-memory-game": {
+    sections: [
+      {
+        id: "background",
+        title: "프로젝트 배경 및 목표",
         content: (
           <div className="space-y-4">
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-              위의 문제를 해결하고자 팀 프로젝트를 통해 <strong className="font-semibold text-gray-900 dark:text-white">사진 한 장으로 식단을 기록하는 AI 당뇨 관리 솔루션</strong>을 기획했습니다.
+              안드로이드 플랫폼에서 동작하는 직관적이고 몰입감 있는 동물 메모리 게임 앱입니다. 제한 시간 내에 타겟 동물 카드를 모두 찾아내는 것을 목표로 하며, <strong>커스텀 뷰(Custom View)를 활용한 그래픽 처리와 상태 관리 능력</strong>을 향상시키기 위해 개발되었습니다.
             </p>
             <ul className="list-disc pl-5 space-y-3 text-gray-700 dark:text-gray-300 leading-relaxed mt-4">
               <li>
-                <strong className="text-gray-900 dark:text-white">자동 음식 인식:</strong> 식단 사진을 촬영하면 AI가 음식을 자동으로 인식합니다.
+                <strong className="text-gray-900 dark:text-white">동적 카드 배치 및 게임 로직:</strong> 24장의 카드(정답 4장, 오답 18장, 폭탄 2장)를 랜덤하게 섞어 매번 새로운 경험 제공
               </li>
               <li>
-                <strong className="text-gray-900 dark:text-white">직관적인 정보 제공:</strong> 당 부하 지수 및 필수 영양 정보를 한눈에 시각화하여 사용자의 피로도를 낮춥니다.
+                <strong className="text-gray-900 dark:text-white">실시간 반응형 점수 시스템:</strong> 반응 시간에 따른 차등 보너스 점수 및 연속 정답 콤보 구현
               </li>
               <li>
-                <strong className="text-gray-900 dark:text-white">개인화 추천:</strong> 개인 맞춤형 분석을 통해 부족한 영양을 채울 수 있는 최적의 식단을 추천하는 앱 구조를 설계했습니다.
+                <strong className="text-gray-900 dark:text-white">로컬 데이터 보존:</strong> SharedPreferences를 활용한 기기 내 최고 점수(High Score) 기록
+              </li>
+            </ul>
+          </div>
+        )
+      },
+      {
+        id: "tech-stack",
+        title: "시스템 아키텍처 및 기술 스택",
+        content: (
+          <div className="space-y-6">
+            <div className="bg-gray-50 dark:bg-slate-800/50 p-6 rounded-2xl border border-gray-100 dark:border-slate-700/50">
+              <h4 className="font-bold text-lg mb-3">Frontend & Core</h4>
+              <ul className="space-y-2 text-gray-700 dark:text-gray-300">
+                <li><span className="font-semibold text-gray-900 dark:text-white">Framework & Language:</span> Android SDK, Java</li>
+                <li><span className="font-semibold text-gray-900 dark:text-white">UI & Graphics:</span> Custom <code>View</code> (Canvas, Drawable API), XML Layouts</li>
+              </ul>
+            </div>
+            
+            <div className="bg-gray-50 dark:bg-slate-800/50 p-6 rounded-2xl border border-gray-100 dark:border-slate-700/50">
+              <h4 className="font-bold text-lg mb-3">Data & Integration</h4>
+              <ul className="space-y-2 text-gray-700 dark:text-gray-300">
+                <li><span className="font-semibold text-gray-900 dark:text-white">Local Storage:</span> <code>SharedPreferences</code></li>
+                <li><span className="font-semibold text-gray-900 dark:text-white">Multimedia & Concurrency:</span> <code>MediaPlayer</code> API, <code>Handler</code>, <code>CountDownTimer</code>, Background <code>Thread</code></li>
+              </ul>
+            </div>
+          </div>
+        )
+      },
+      {
+        id: "challenges",
+        title: "핵심 기술적 도전 및 해결 과정",
+        content: (
+          <div className="space-y-8">
+            <div>
+              <h4 className="text-xl font-bold mb-4">Custom View를 활용한 동적 그리드 렌더링</h4>
+              <ul className="list-disc pl-5 space-y-3 text-gray-700 dark:text-gray-300 leading-relaxed">
+                <li>
+                  <span className="font-semibold text-gray-900 dark:text-white">Challenge:</span> 안드로이드의 기본 Layout을 사용하지 않고, 4x6 배열의 카드를 다양한 화면 크기에 맞춰 비율이 깨지지 않게 렌더링해야 했습니다.
+                </li>
+                <li>
+                  <span className="font-semibold text-gray-900 dark:text-white">Solution:</span> <code>CustomView</code>의 <code>onDraw()</code> 메서드를 오버라이드하여, 화면의 너비와 높이를 기반으로 카드 간격과 크기를 동적으로 연산해 Canvas에 카드를 직접 그리는 방식으로 해결했습니다.
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="text-xl font-bold mb-4">게임 상태 동기화 및 터치 이벤트 제어</h4>
+              <ul className="list-disc pl-5 space-y-3 text-gray-700 dark:text-gray-300 leading-relaxed">
+                <li>
+                  <span className="font-semibold text-gray-900 dark:text-white">Challenge:</span> 시작 시 4초간 전체 카드를 보여준 후 뒤집는 기능과, 의도치 않은 연속 터치(다중 터치)로 인한 로직 오류를 방지해야 했습니다.
+                </li>
+                <li>
+                  <span className="font-semibold text-gray-900 dark:text-white">Solution:</span> <code>Thread</code>와 <code>Handler.postDelayed()</code>를 조합해 비동기 UI 업데이트를 구현하고, 터치 발생 시 1초 동안 추가 입력을 차단하는 플래그를 두어 버그를 방지했습니다.
+                </li>
+              </ul>
+            </div>
+          </div>
+        )
+      },
+      {
+        id: "results",
+        title: "프로젝트 성과 및 배운 점",
+        content: (
+          <div className="space-y-4">
+            <ul className="list-disc pl-5 space-y-3 text-gray-700 dark:text-gray-300 leading-relaxed">
+              <li>
+                <span className="font-semibold text-gray-900 dark:text-white">Android 2D Graphics 렌더링 이해:</span> 기본 위젯에 의존하지 않고 드로잉 사이클과 직접적인 터치 이벤트(<code>onTouchEvent</code>) 처리 방식을 깊이 이해하게 되었습니다.
+              </li>
+              <li>
+                <span className="font-semibold text-gray-900 dark:text-white">비동기 처리 및 스레드 통신:</span> 게임 타이머와 UI 지연 처리를 통해 안드로이드의 메인 UI 스레드와 백그라운드 스레드 간의 안전한 통신 방법을 학습했습니다.
               </li>
             </ul>
           </div>

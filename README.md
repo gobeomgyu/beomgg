@@ -1,34 +1,37 @@
 # 프로젝트 배경 및 목표
 
-안드로이드 플랫폼에서 동작하는 직관적이고 몰입감 있는 동물 메모리 게임 앱입니다. 제한 시간 내에 타겟 동물 카드를 모두 찾아내는 것을 목표로 하며, 커스텀 뷰(Custom View)를 활용한 그래픽 처리와 상태 관리 능력을 향상시키기 위해 개발되었습니다.
+'쏙식(Ssoksik)'은 개인의 혈당 관리와 건강한 식습관 형성을 돕기 위해 기획된 AI 기반 종합 헬스케어 플랫폼(모바일 앱 및 관리자 웹)입니다. 기존의 단순 기록형 앱에서 벗어나, 최신 AI 기술을 활용한 맞춤형 분석 및 추천을 통해 사용자에게 실질적인 가치를 제공하는 것을 목표로 했습니다.
 
-- **동적 카드 배치 및 게임 로직**: 24장의 카드(정답 4장, 오답 18장, 폭탄 2장)를 게임 시작 시마다 랜덤하게 섞어 배치하여 매번 새로운 게임 경험을 제공합니다.
-- **실시간 반응형 점수 시스템**: 카드를 찾는 반응 시간(2초 이하, 4초 이하 등)과 연속 정답 여부에 따라 차등적인 점수(Bonus)를 부여하고, 폭탄 클릭 시 즉시 게임 오버 처리되는 긴장감 있는 룰을 구현했습니다.
-- **SharedPreferences 기반 데이터 저장**: 기기 내부에 최고 기록(High Score)을 지속적으로 저장하고 불러와 사용자의 도전 의식을 자극합니다.
+- **AI 기반 맞춤형 식단 추천**: Google GenAI를 연동하여 사용자의 혈당 수치와 식사 기록(이미지 및 텍스트)을 분석하고, 개인화된 식단과 피드백을 실시간으로 제공합니다.
+- **멀티 플랫폼 통합 시스템 구축**: 사용자 편의를 위한 React Native(Expo) 기반 모바일 앱과, 데이터 시각화 및 관리를 위한 React(Vite) 기반의 관리자 웹 대시보드를 통합 구축했습니다.
+- **직관적인 식사 및 혈당 기록**: 직관적인 모바일 UI/UX를 통해 매일의 식단과 혈당을 손쉽게 기록하고, 캘린더 및 통계 차트를 통해 건강 상태 변화를 한눈에 파악할 수 있도록 구현했습니다.
 
 # 시스템 아키텍처 및 기술 스택
 
-## Frontend & Core
-- **Framework & Runtime**: Android SDK, Java
-- **Language & Type System**: Java
-- **UI & Graphics**: Custom `View` (Canvas, Drawable API), XML Layouts
+## Frontend & Core (Mobile / Admin)
+- **Framework & Runtime**: 
+  - [Mobile] React Native (Expo), React 19
+  - [Admin] React 19, Vite
+- **Language & Type System**: TypeScript, JavaScript
+- **Styling & Visualization**: Tailwind CSS v3 (Admin), Recharts (통계 시각화)
 
-## Data & Integration
-- **Local Storage**: `SharedPreferences` (최고 점수 저장)
-- **Multimedia**: `MediaPlayer` API (배경음, 정답/오답 및 동물 울음소리 효과음)
-- **Concurrency**: `Handler`, `CountDownTimer`, Background `Thread` (타이머 및 상태 지연 처리)
+## Backend & Data
+- **Framework**: Java 21, Spring Boot 4.0, Spring WebMVC, Spring Data JPA
+- **Database**: MySQL
+- **Security & Storage**: Spring Security (JWT 기반 인증), AWS S3 (이미지 스토리지)
+- **AI & Integration**: Google GenAI SDK (`com.google.genai:google-genai`), Springdoc OpenAPI (Swagger)
 
 # 핵심 기술적 도전 및 해결 과정
 
-## Custom View를 활용한 동적 그리드 렌더링
-- **Challenge**: 안드로이드의 기본 Layout(예: GridLayout)을 사용하지 않고, 4x6 배열의 카드를 다양한 화면 크기(해상도)에 맞춰 비율이 깨지지 않게 렌더링해야 했습니다.
-- **Solution**: `CustomView`의 `onDraw()` 메서드를 오버라이드하여, 화면의 너비와 높이를 계산한 후 카드 간의 간격과 크기(가로/세로 1:1.4 비율)를 동적으로 연산하여 Canvas에 직접 카드를 그리는(`Drawable.draw()`) 방식으로 해결했습니다.
+## Google GenAI 연동 및 프롬프트 최적화
+- **Challenge**: 사용자의 식사 및 혈당 데이터를 바탕으로 AI에게 분석 및 추천을 요청할 때, 응답 형식이 일관되지 않아 앱 내에서 UI로 파싱하고 렌더링하는 데 오류가 발생했습니다.
+- **Solution**: Google GenAI SDK를 활용하면서 백엔드에서 엄격한 프롬프트 엔지니어링을 적용하고, 응답을 특정 JSON 포맷으로 강제(Structured Output)하도록 처리하여 클라이언트 단의 파싱 안정성을 크게 높였습니다.
 
-## 게임 상태 동기화 및 터치 이벤트 제어
-- **Challenge**: 게임 시작 시 4초간 전체 카드를 보여준 후 뒤집는 기능과, 사용자가 카드를 클릭할 때 의도치 않은 연속 터치(다중 터치)를 방지하는 처리가 필요했습니다.
-- **Solution**: 백그라운드 `Thread`와 `Handler.postDelayed()`를 조합하여 4초 후 UI 상태를 업데이트하고 카드를 덮는 로직을 구현했습니다. 또한 터치 이벤트 발생 시 1초 동안 추가 입력을 막는 상태 플래그(`isTouchBlocked`)를 사용하여 버그를 방지했습니다.
+## 모바일 대용량 이미지 처리와 AWS S3 업로드 최적화
+- **Challenge**: 사용자가 모바일 기기(Expo Image Picker)에서 촬영한 고해상도 식사 이미지를 그대로 서버에 전송하면 네트워크 지연과 AWS S3 스토리지 낭비가 발생했습니다.
+- **Solution**: 클라이언트(앱) 단에서 이미지 리사이징을 선행하여 용량을 최소화한 후 백엔드로 전송하고, 백엔드는 AWS S3와 연동하여 빠르고 안전하게 이미지를 저장하도록 최적화된 업로드 파이프라인을 구축했습니다.
 
 # 프로젝트 성과 및 배운 점
 
-- **Android 2D Graphics 및 생명주기 이해**: 기본 제공되는 위젯에 의존하지 않고 Canvas를 이용해 직접 화면을 구성하며, 안드로이드 뷰의 드로잉 사이클과 터치 이벤트(`onTouchEvent`) 처리 방식을 깊이 이해하게 되었습니다.
-- **비동기 처리 및 스레드 통신**: 게임 타이머 동작과 카드 공개/숨김 처리 등 비동기적인 타이밍 이슈를 해결하면서 안드로이드의 메인 UI 스레드와 백그라운드 스레드 간의 안전한 통신 방법(`Handler`, `post()`)을 학습했습니다.
+- **마이크로서비스에 준하는 통합 시스템 설계**: 모바일(사용자), 웹(관리자), 백엔드(API)로 구성된 3개의 저장소를 분리 운영하면서, 각 플랫폼 간의 원활한 데이터 통신(REST API, JWT 인증)과 구조적 결합을 이끌어내는 아키텍처 설계 역량을 습득했습니다.
+- **최신 AI 기술의 실무 적용**: 단순 CRUD 구현을 넘어 Google GenAI라는 외부 AI 모델을 서비스의 핵심 비즈니스 로직에 결합함으로써, 실제 사용자에게 인공지능이 어떻게 맞춤형 가치를 제공할 수 있는지 실무적으로 경험했습니다.
