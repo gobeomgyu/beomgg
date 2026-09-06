@@ -75,7 +75,7 @@ export default async function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {displayPosts.map((post, index) => (
+            {displayPosts.map((post: any, index: number) => (
               <PostCard
                 key={index}
                 title={post.title}
