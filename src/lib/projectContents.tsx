@@ -364,6 +364,102 @@ export const projectContents: Record<string, { sections: ProjectSection[] }> = {
       }
     ]
   },
+  "checkproduct": {
+    sections: [
+      {
+        id: "background",
+        title: "프로젝트 배경 및 목표",
+        content: (
+          <div className="space-y-4">
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+              시중에 유통되는 식품 중 위해 물질 검출 등으로 리콜 조치된 상품들을 소비자가 손쉽게 확인하여 피해를 예방할 수 있도록 돕는 <strong>모바일 식품 리콜 정보 조회 서비스</strong>입니다.
+            </p>
+            <ul className="list-disc pl-5 space-y-3 text-gray-700 dark:text-gray-300 leading-relaxed mt-4">
+              <li>
+                <strong className="text-gray-900 dark:text-white">공공데이터 연동:</strong> 식품의약품안전처의 공공데이터(XML)를 파싱하여 최신 리콜 정보를 실시간으로 제공
+              </li>
+              <li>
+                <strong className="text-gray-900 dark:text-white">REST API 서버 구축:</strong> Spring Boot 기반으로 상품 조회 및 관리 기능을 제공하는 백엔드 API 설계
+              </li>
+              <li>
+                <strong className="text-gray-900 dark:text-white">협업 환경 구축:</strong> Github PR(Pull Request) 중심의 코드 리뷰 및 협업 프로세스 도입
+              </li>
+            </ul>
+          </div>
+        )
+      },
+      {
+        id: "tech-stack",
+        title: "시스템 아키텍처 및 기술 스택",
+        content: (
+          <div className="space-y-6">
+            <div className="bg-gray-50 dark:bg-slate-800/50 p-6 rounded-2xl border border-gray-100 dark:border-slate-700/50">
+              <h4 className="font-bold text-lg mb-3">Backend (Spring Boot)</h4>
+              <ul className="space-y-2 text-gray-700 dark:text-gray-300">
+                <li><span className="font-semibold text-gray-900 dark:text-white">Framework:</span> Java 17, Spring Boot 3.5</li>
+                <li><span className="font-semibold text-gray-900 dark:text-white">Database & ORM:</span> H2 Database, Spring Data JPA</li>
+                <li><span className="font-semibold text-gray-900 dark:text-white">API Docs:</span> Swagger (Springdoc OpenAPI)</li>
+              </ul>
+            </div>
+            
+            <div className="bg-gray-50 dark:bg-slate-800/50 p-6 rounded-2xl border border-gray-100 dark:border-slate-700/50">
+              <h4 className="font-bold text-lg mb-3">Frontend (Mobile App)</h4>
+              <ul className="space-y-2 text-gray-700 dark:text-gray-300">
+                <li><span className="font-semibold text-gray-900 dark:text-white">Framework:</span> React Native, Expo</li>
+                <li><span className="font-semibold text-gray-900 dark:text-white">Data Parsing:</span> fast-xml-parser (공공데이터 XML 처리)</li>
+              </ul>
+            </div>
+          </div>
+        )
+      },
+      {
+        id: "challenges",
+        title: "핵심 기술적 도전 및 해결 과정",
+        content: (
+          <div className="space-y-8">
+            <div>
+              <h4 className="text-xl font-bold mb-4">공공데이터 XML 파싱과 구조화</h4>
+              <ul className="list-disc pl-5 space-y-3 text-gray-700 dark:text-gray-300 leading-relaxed">
+                <li>
+                  <span className="font-semibold text-gray-900 dark:text-white">Challenge:</span> 식품안전정보원 공공데이터가 복잡한 XML 형태로 제공되어 클라이언트 앱에서 데이터를 직접 렌더링하기 까다로웠습니다.
+                </li>
+                <li>
+                  <span className="font-semibold text-gray-900 dark:text-white">Solution:</span> <code>fast-xml-parser</code>를 도입하여 모바일 클라이언트 단에서 XML 데이터를 효율적으로 JSON 객체로 변환하고, 필요한 핵심 데이터만 추출해 UI에 바인딩했습니다.
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-xl font-bold mb-4">Spring Boot REST API 설계와 명세화</h4>
+              <ul className="list-disc pl-5 space-y-3 text-gray-700 dark:text-gray-300 leading-relaxed">
+                <li>
+                  <span className="font-semibold text-gray-900 dark:text-white">Challenge:</span> 프론트엔드와 백엔드 개발 병렬 진행 시, API 엔드포인트와 데이터 규격에 대한 의사소통 비용이 컸습니다.
+                </li>
+                <li>
+                  <span className="font-semibold text-gray-900 dark:text-white">Solution:</span> Swagger(OpenAPI) 개념을 적용하여 백엔드에서 명확하게 API 스펙을 설계하고, 원활한 협업 흐름을 가져갈 수 있도록 기반을 마련했습니다.
+                </li>
+              </ul>
+            </div>
+          </div>
+        )
+      },
+      {
+        id: "results",
+        title: "프로젝트 성과 및 배운 점",
+        content: (
+          <div className="space-y-4">
+            <ul className="list-disc pl-5 space-y-3 text-gray-700 dark:text-gray-300 leading-relaxed">
+              <li>
+                <span className="font-semibold text-gray-900 dark:text-white">팀 협업 프로세스 확립:</span> Github PR 리뷰 문화를 경험하고, 프론트엔드와 백엔드의 브랜치를 분리하여 협업하는 구조를 이해했습니다.
+              </li>
+              <li>
+                <span className="font-semibold text-gray-900 dark:text-white">풀스택 아키텍처 경험:</span> Spring Boot 백엔드와 React Native 모바일 앱이 연동되는 전체 시스템 아키텍처 흐름을 파악하는 계기가 되었습니다.
+              </li>
+            </ul>
+          </div>
+        )
+      }
+    ]
+  }
 };
 
 export const getDefaultContent = () => ({
