@@ -36,6 +36,28 @@ export const projectContents: Record<string, { sections: ProjectSection[] }> = {
         title: "시스템 아키텍처 및 기술 스택",
         content: (
           <div className="space-y-6">
+            <div className="bg-gray-50 dark:bg-slate-800/50 p-6 rounded-2xl border border-gray-100 dark:border-slate-700/50 overflow-x-auto mb-6">
+              <pre className="text-xs sm:text-sm font-mono text-gray-800 dark:text-gray-200 leading-relaxed min-w-[600px]">
+{`┌─────────────────────────────────────────────────────────┐
+│                 Client Layer (Web Browser)              │
+│  - UI/UX: React 19, Tailwind CSS v4, Dark Mode          │
+│  - Interactivity: Client Components, Lucide Icons       │
+└────────────────────────────┬────────────────────────────┘
+                             │ React Server Components
+                             ▼
+┌─────────────────────────────────────────────────────────┐
+│                 Server Layer (Next.js 16.2 App Router)  │
+│  - Routing & Layouts: File-system based router          │
+│  - Data Fetching: Server-side fetch (fast-xml-parser)   │
+└────────────────────────────┬────────────────────────────┘
+                             │ RSS Feed Request
+                             ▼
+┌─────────────────────────────────────────────────────────┐
+│                 External Data Source                    │
+│  - Velog RSS (XML Feed for Blog Posts)                  │
+└─────────────────────────────────────────────────────────┘`}
+              </pre>
+            </div>
             <div className="bg-gray-50 dark:bg-slate-800/50 p-6 rounded-2xl border border-gray-100 dark:border-slate-700/50">
               <h4 className="font-bold text-lg mb-3">Frontend & Core</h4>
               <ul className="space-y-2 text-gray-700 dark:text-gray-300">
@@ -134,6 +156,29 @@ export const projectContents: Record<string, { sections: ProjectSection[] }> = {
         title: "시스템 아키텍처 및 기술 스택",
         content: (
           <div className="space-y-6">
+            <div className="bg-gray-50 dark:bg-slate-800/50 p-6 rounded-2xl border border-gray-100 dark:border-slate-700/50 overflow-x-auto mb-6">
+              <pre className="text-xs sm:text-sm font-mono text-gray-800 dark:text-gray-200 leading-relaxed min-w-[600px]">
+{`┌─────────────────────────────────────────────────────────┐
+│                 Client Layer (Mobile & Admin)           │
+│  - Mobile (React Native/Expo): User UI, Camera Input    │
+│  - Admin (React/Vite): Web Dashboard, Statistics        │
+└────────────────────────────┬────────────────────────────┘
+                             │ HTTP / REST API (JWT)
+                             ▼
+┌─────────────────────────────────────────────────────────┐
+│                 Core Backend (Spring Boot 4.0)          │
+│  - Auth Domain: Spring Security, JWT Token Management   │
+│  - Core Domain: Food Record, Blood Sugar Tracking       │
+│  - AI Integration: Prompt Engineering, Data Parsing     │
+└────────────┬───────────────┬────────────────┬───────────┘
+             │ (JPA/SQL)     │ (HTTP)         │ (SDK)
+             ▼               ▼                ▼
+┌───────────────┐ ┌────────────────┐ ┌────────────────────┐
+│   MySQL 8.0   │ │     AWS S3     │ │   Google GenAI     │
+│ (User, Record)│ │ (Food Images)  │ │ (Vision & Text AI) │
+└───────────────┘ └────────────────┘ └────────────────────┘`}
+              </pre>
+            </div>
             <div className="bg-gray-50 dark:bg-slate-800/50 p-6 rounded-2xl border border-gray-100 dark:border-slate-700/50">
               <h4 className="font-bold text-lg mb-3">Frontend & Core</h4>
               <ul className="space-y-2 text-gray-700 dark:text-gray-300">
@@ -393,6 +438,29 @@ export const projectContents: Record<string, { sections: ProjectSection[] }> = {
         title: "시스템 아키텍처 및 기술 스택",
         content: (
           <div className="space-y-6">
+            <div className="bg-gray-50 dark:bg-slate-800/50 p-6 rounded-2xl border border-gray-100 dark:border-slate-700/50 overflow-x-auto mb-6">
+              <pre className="text-xs sm:text-sm font-mono text-gray-800 dark:text-gray-200 leading-relaxed min-w-[600px]">
+{`┌─────────────────────────────────────────────────────────┐
+│                 Client Layer (Mobile App)               │
+│  - Presentation: React Native (Expo)                    │
+│  - Data Parsing: fast-xml-parser (Public Data XML)      │
+└────────────────────────────┬────────────────────────────┘
+                             │ HTTP / REST API
+                             ▼
+┌─────────────────────────────────────────────────────────┐
+│                 Core Backend (Spring Boot 3.5)          │
+│  - Product Domain: Search, Pagination, Filtering        │
+│  - Admin Domain: Recall Data Management                 │
+│  - API Docs: Springdoc OpenAPI (Swagger)                │
+└────────────────────────────┬────────────────────────────┘
+                             │ (JPA / SQL)
+                             ▼
+┌─────────────────────────────────────────────────────────┐
+│                 Database (H2 Database)                  │
+│  - Tables: Products, Recall Info, Categories            │
+└─────────────────────────────────────────────────────────┘`}
+              </pre>
+            </div>
             <div className="bg-gray-50 dark:bg-slate-800/50 p-6 rounded-2xl border border-gray-100 dark:border-slate-700/50">
               <h4 className="font-bold text-lg mb-3">Backend (Spring Boot)</h4>
               <ul className="space-y-2 text-gray-700 dark:text-gray-300">
