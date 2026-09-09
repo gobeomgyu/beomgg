@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { Eye } from "lucide-react";
-import { ClockIcon } from "./icons";
 
 interface PostCardProps {
   title: string;
@@ -10,23 +9,11 @@ interface PostCardProps {
   tags: string[];
   date: string;
   link?: string;
-  readTime?: string;
 }
 
-function getRelativeTime(timestamp: number) {
-  const diffInSeconds = Math.floor((Date.now() - timestamp) / 1000);
-  if (diffInSeconds < 60) return "just now";
-  const diffInMinutes = Math.floor(diffInSeconds / 60);
-  if (diffInMinutes < 60) return `${diffInMinutes} min${diffInMinutes > 1 ? 's' : ''} ago`;
-  const diffInHours = Math.floor(diffInMinutes / 60);
-  if (diffInHours < 24) return `${diffInHours} hr${diffInHours > 1 ? 's' : ''} ago`;
-  const diffInDays = Math.floor(diffInHours / 24);
-  return `${diffInDays} day${diffInDays > 1 ? 's' : ''} ago`;
-}
 
-export function PostCard({ title, description, tags, date, readTime, link }: PostCardProps) {
+export function PostCard({ title, description, tags, date, link }: PostCardProps) {
   const [clickCount, setClickCount] = useState<number>(0);
-  const [lastClickedAt, setLastClickedAt] = useState<number | null>(null);
 
   // Determine base views
   let baseViews = 20 + (title.length % 30);
@@ -78,10 +65,6 @@ export function PostCard({ title, description, tags, date, readTime, link }: Pos
       if (savedClicks) {
         setClickCount(parseInt(savedClicks, 10));
       }
-      const savedTime = localStorage.getItem(`post_time_v5_${link}`);
-      if (savedTime) {
-        setLastClickedAt(parseInt(savedTime, 10));
-      }
     }
   }, [link]);
 
@@ -93,7 +76,6 @@ export function PostCard({ title, description, tags, date, readTime, link }: Pos
       setClickCount(newClicks);
       localStorage.setItem(`post_clicks_v5_${link}`, newClicks.toString());
       const now = Date.now();
-      setLastClickedAt(now);
       localStorage.setItem(`post_time_v5_${link}`, now.toString());
     }
   };
@@ -105,31 +87,22 @@ export function PostCard({ title, description, tags, date, readTime, link }: Pos
         {description}
       </p>
       
-      <div className="flex items-center justify-between mb-5">
-        <div className="flex flex-wrap gap-2">
-          {tags.map((tag) => (
-            <span 
-              key={tag} 
-              className="px-3.5 py-1.5 bg-slate-50 dark:bg-slate-800/80 text-slate-600 dark:text-slate-300 text-[13px] font-semibold rounded-full border border-slate-100 dark:border-slate-700/50"
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-        
-        {views > 0 && (
-          <span className="flex items-center gap-1.5 text-[14px] text-slate-400 dark:text-slate-500 font-semibold">
-            <Eye size={16} />
-            {views.toLocaleString()}
+      <div className="flex flex-wrap gap-2 mb-5">
+        {tags.map((tag) => (
+          <span 
+            key={tag} 
+            className="px-3.5 py-1.5 bg-slate-50 dark:bg-slate-800/80 text-slate-600 dark:text-slate-300 text-[13px] font-semibold rounded-full border border-slate-100 dark:border-slate-700/50"
+          >
+            {tag}
           </span>
-        )}
+        ))}
       </div>
       
       <div className="flex items-center justify-between mt-auto pt-5 border-t border-slate-100 dark:border-slate-800/80">
-        {lastClickedAt ? (
+        {views > 0 ? (
           <span className="flex items-center gap-1.5 text-[14px] text-slate-500 dark:text-slate-400 font-semibold tracking-wide">
-            <ClockIcon size={16} />
-            {`Read ${getRelativeTime(lastClickedAt)}`}
+            <Eye size={16} />
+            {views.toLocaleString()}
           </span>
         ) : (
           <span />
