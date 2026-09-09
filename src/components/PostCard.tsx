@@ -126,10 +126,14 @@ export function PostCard({ title, description, tags, date, readTime, link }: Pos
       </div>
       
       <div className="flex items-center justify-between mt-auto pt-5 border-t border-slate-100 dark:border-slate-800/80">
-        <span className="flex items-center gap-1.5 text-[14px] text-slate-500 dark:text-slate-400 font-semibold tracking-wide">
-          <ClockIcon size={16} />
-          {lastClickedAt ? `Read ${getRelativeTime(lastClickedAt)}` : 'Unread'}
-        </span>
+        {lastClickedAt ? (
+          <span className="flex items-center gap-1.5 text-[14px] text-slate-500 dark:text-slate-400 font-semibold tracking-wide">
+            <ClockIcon size={16} />
+            {`Read ${getRelativeTime(lastClickedAt)}`}
+          </span>
+        ) : (
+          <span />
+        )}
         <span className="text-[14px] text-slate-500 dark:text-slate-400 font-semibold tracking-wide">
           {date}
         </span>
