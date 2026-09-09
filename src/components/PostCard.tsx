@@ -72,11 +72,23 @@ export function PostCard({ title, description, tags, date, link }: PostCardProps
 
   const handleClick = () => {
     if (link) {
-      const newClicks = clickCount + 1;
-      setClickCount(newClicks);
-      localStorage.setItem(`post_clicks_v5_${link}`, newClicks.toString());
-      const now = Date.now();
-      localStorage.setItem(`post_time_v5_${link}`, now.toString());
+      const now = new Date();
+      const kstTime = new Date(now.getTime() + 9 * 60 * 60 * 1000);
+      const kstDate = kstTime.toISOString().split('T')[0]; // "YYYY-MM-DD" in KST
+      
+      const savedDate = localStorage.getItem(`post_date_v5_${link}`);
+      
+      let shouldIncrement = true;
+      if (savedDate === kstDate) {
+        shouldIncrement = false;
+      }
+
+      if (shouldIncrement) {
+        const newClicks = clickCount + 1;
+        setClickCount(newClicks);
+        localStorage.setItem(`post_clicks_v5_${link}`, newClicks.toString());
+        localStorage.setItem(`post_date_v5_${link}`, kstDate);
+      }
     }
   };
 
