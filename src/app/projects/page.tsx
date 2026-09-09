@@ -29,7 +29,7 @@ export default function Projects() {
             <p className="text-gray-500 dark:text-gray-400 font-medium">
               {searchQuery ? (
                 <>
-                  <span className="text-blue-500 font-bold">'{searchQuery}'</span> 검색 결과 <span className="font-bold text-gray-700 dark:text-gray-300">{filteredProjects.length}</span>개
+                  <span className="text-blue-500 font-bold">&apos;{searchQuery}&apos;</span> 검색 결과 <span className="font-bold text-gray-700 dark:text-gray-300">{filteredProjects.length}</span>개
                 </>
               ) : (
                 <>총 <span className="font-bold text-gray-700 dark:text-gray-300">{projectsData.length}</span>개의 프로젝트가 진행되었습니다.</>
@@ -81,7 +81,7 @@ export default function Projects() {
             </div>
             <h3 className="text-xl font-bold mb-2">검색 결과가 없습니다</h3>
             <p className="text-gray-500 dark:text-gray-400 max-w-md mb-8 leading-relaxed">
-              '{searchQuery}'에 매칭되는 프로젝트를 찾지 못했습니다. 다른 단어나 기술 스택으로 검색해 보세요.
+              &apos;{searchQuery}&apos;에 매칭되는 프로젝트를 찾지 못했습니다. 다른 단어나 기술 스택으로 검색해 보세요.
             </p>
             <button 
               onClick={() => setSearchQuery("")}

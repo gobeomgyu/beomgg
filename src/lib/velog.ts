@@ -33,7 +33,15 @@ export async function getVelogPosts() {
     const result = await response.json();
     const itemsArray = result.data?.posts || [];
     
-    return itemsArray.map((item: any) => {
+    interface VelogPost {
+      title: string;
+      short_description: string;
+      url_slug: string;
+      released_at: string;
+      tags: string[];
+    }
+
+    return itemsArray.map((item: VelogPost) => {
       let descriptionText = '';
       if (item.short_description) {
          descriptionText = item.short_description.replace(/<[^>]*>?/gm, '').trim().slice(0, 150) + '...';

@@ -2,6 +2,7 @@ import { GithubContributions } from "@/components/GithubContributions";
 import { ProjectCard } from "@/components/ProjectCard";
 import { PostCard } from "@/components/PostCard";
 import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 import { getVelogPosts } from "@/lib/velog";
 import { projectsData } from "@/lib/data";
 
@@ -42,10 +43,10 @@ export default async function Home() {
         <section>
           <div className="flex items-end justify-between mb-8">
             <h2 className="text-3xl font-bold">Projects</h2>
-            <a href="/projects" className="flex items-center gap-1 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors group">
+            <Link href="/projects" className="flex items-center gap-1 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors group">
               View All
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </a>
+            </Link>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -68,21 +69,20 @@ export default async function Home() {
         <section className="mt-24">
           <div className="flex items-end justify-between mb-8">
             <h2 className="text-3xl font-bold">Recent Posts</h2>
-            <a href="/blog" className="flex items-center gap-1 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors group">
+            <Link href="/blog" className="flex items-center gap-1 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors group">
               Read More
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </a>
+            </Link>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {displayPosts.map((post: any, index: number) => (
+            {displayPosts.map((post: { title: string; description: string; tags: string[]; date: string; link: string }, index: number) => (
               <PostCard
                 key={index}
                 title={post.title}
                 description={post.description}
                 tags={post.tags}
                 date={post.date}
-                readTime={post.readTime}
                 link={post.link}
               />
             ))}

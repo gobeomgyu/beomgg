@@ -135,7 +135,7 @@ export const projectContents: Record<string, { sections: ProjectSection[] }> = {
         content: (
           <div className="space-y-4">
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-              '쏙식(Ssoksik)'은 개인의 혈당 관리와 건강한 식습관 형성을 돕기 위해 기획된 AI 기반 종합 헬스케어 플랫폼입니다. 평소 건강과 식단 관리에 대한 관심, 특히 당뇨 환자분들의 일상적 피로도에 착안해 기존의 단순 기록형 앱에서 벗어나 <strong className="font-semibold text-gray-900 dark:text-white">최신 AI 기술을 활용한 맞춤형 분석 및 추천</strong>을 제공하는 것을 목표로 했습니다.
+              &apos;쏙식(Ssoksik)&apos;은 개인의 혈당 관리와 건강한 식습관 형성을 돕기 위해 기획된 AI 기반 종합 헬스케어 플랫폼입니다. 평소 건강과 식단 관리에 대한 관심, 특히 당뇨 환자분들의 일상적 피로도에 착안해 기존의 단순 기록형 앱에서 벗어나 <strong className="font-semibold text-gray-900 dark:text-white">최신 AI 기술을 활용한 맞춤형 분석 및 추천</strong>을 제공하는 것을 목표로 했습니다.
             </p>
             <ul className="list-disc pl-5 space-y-3 text-gray-700 dark:text-gray-300 leading-relaxed mt-4">
               <li>

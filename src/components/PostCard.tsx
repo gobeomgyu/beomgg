@@ -63,6 +63,7 @@ export function PostCard({ title, description, tags, date, link }: PostCardProps
     if (link) {
       const savedClicks = localStorage.getItem(`post_clicks_v5_${link}`);
       if (savedClicks) {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setClickCount(parseInt(savedClicks, 10));
       }
     }

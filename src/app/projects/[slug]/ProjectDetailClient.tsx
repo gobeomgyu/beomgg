@@ -2,15 +2,16 @@
 
 import { useState, useEffect } from "react";
 import { ArrowLeft, Calendar } from "lucide-react";
+import Link from "next/link";
 import { GithubIcon } from "@/components/icons";
 import { ProjectSection } from "@/lib/projectContents";
-
-export function ProjectDetailClient({ project, content }: { project: any, content: { sections: ProjectSection[] } }) {
+export function ProjectDetailClient({ project, content }: { project: { slug: string, title: string, description: string, tags: string[], date: string, githubUrl: string, inProgress?: boolean }, content: { sections: ProjectSection[] } }) {
   const [activeId, setActiveId] = useState<string>("");
 
   useEffect(() => {
     // Initial active ID
     if (content.sections.length > 0) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setActiveId(content.sections[0].id);
     }
 
@@ -43,10 +44,10 @@ export function ProjectDetailClient({ project, content }: { project: any, conten
     <div className="relative w-full max-w-3xl mx-auto px-4 py-12 md:py-20">
       {/* Main Content Area */}
       <div className="w-full">
-        <a href="/projects" className="group inline-flex items-center gap-1 text-sm font-medium text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors mb-12">
+        <Link href="/projects" className="group inline-flex items-center gap-1 text-sm font-medium text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors mb-12">
           <ArrowLeft size={16} className="transition-transform group-hover:-translate-x-1" />
           Back to Projects
-        </a>
+        </Link>
 
         <div className="mb-16">
           <h1 className="text-2xl md:text-3xl lg:text-[42px] font-extrabold tracking-tight mb-6 leading-[1.3] text-slate-900 dark:text-slate-100">
